@@ -1,0 +1,4 @@
+Packages Needed:
+- Requests 
+- Pandas
+- Typing
