@@ -13,7 +13,7 @@ def load_data():
     df = pd.read_csv('eu_data_world_bank.csv')
 
     ## Criar Média dos EU 27 para comparação
-    eu_average = df.groupby('year').numeric_only().mean().reset_index()
+    eu_average = df.groupby('year').mean(numeric_only=True).reset_index()
     eu_average['country'] = 'União Europeia (Média)'
     eu_average['country_code'] = 'EU27'
 
@@ -111,7 +111,7 @@ if data_c is not None and data_t is not None:
         st.markdown("#### 💶 PIB per Capita")
         # KPI Controle
         val_c = data_c['pib_per_capita_eur']
-        var_c = data_c['pib_pc_eur_pct_var']
+        var_c = data_c['pib_pc_eur_crescimento']
         st.metric(label=control_country, value=f"{val_c:,.0f} €", delta=f"{var_c:.2f}% (Anual)")
         
         # Comparação com Target
