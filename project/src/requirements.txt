@@ -1,7 +1,8 @@
+altair==4.2.2
 matplotlib
 pandas
 plotly
 requests
 statsmodels
-streamlit
+streamlit==1.31.0
 typing

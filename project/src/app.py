@@ -1,6 +1,7 @@
 import streamlit as st # type: ignore
 import pandas as pd
 import plotly.express as px
+import os
 
 #  Configuração da Página
 st.set_page_config(page_title="World Bank Indicators Dashboard",
@@ -10,7 +11,9 @@ st.set_page_config(page_title="World Bank Indicators Dashboard",
 ## Carregar os dados em cache por motivos de performance
 @st.cache_data
 def load_data():
-    df = pd.read_csv('eu_data_world_bank.csv')
+    current_folder = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_folder, 'eu_data_world_bank.csv')
+    df = pd.read_csv(file_path)
 
     ## Criar Média dos EU 27 para comparação
     eu_average = df.groupby('year').mean(numeric_only=True).reset_index()
@@ -87,7 +90,7 @@ df_filtered = df_full[
 ]
 
 
-# 6. FUNÇÃO AUXILIAR PARA KPIs
+# FUNÇÃO AUXILIAR PARA KPIs
 def get_metrics(country, year):
     row = df_filtered[(df_filtered['country'] == country) & (df_filtered['year'] == year)]
     return row.iloc[0] if not row.empty else None
@@ -96,7 +99,7 @@ def get_metrics(country, year):
 data_c = get_metrics(control_country, anos[1])
 data_t = get_metrics(target_country, anos[1])
 
-# 7. EXIBIÇÃO DE KPI CARDS
+# KPI CARDS
 if data_c is not None and data_t is not None:
     st.subheader(f"📍 Resumo Comparativo: {anos[1]}")
 
@@ -118,7 +121,7 @@ if data_c is not None and data_t is not None:
         val_t = data_t['pib_per_capita_eur']
         diff_pct = ((val_c / val_t) - 1) * 100
         st.metric(label=f"vs {target_country}", value=f"{val_t:,.0f} €", 
-                  delta=f"{diff_pct:.1f}% vs Target", delta_color="off")
+                  delta=f"{diff_pct:.1f}% vs Control", delta_color="off")
 
     with col2:
         st.markdown("#### 👥 População")
