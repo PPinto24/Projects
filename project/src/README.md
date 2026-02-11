@@ -2,6 +2,10 @@
 
 Este projeto é um dashboard interativo desenvolvido para analisar e comparar indicadores macroeconómicos dos países da União Europeia. Utilizando dados reais extraídos da API do **World Bank**, a aplicação foca-se na transparência de dados e na facilidade de comparação entre diferentes economias europeias.
 
+## 🔗 Link para o Dashboard
+Aceda ao dashboard online aqui:  
+👉 **[https://pedropintoworldbankcase.streamlit.app/](https://pedropintoworldbankcase.streamlit.app/)**
+
 ## 🚀 Funcionalidades Principais
 
 * **Comparação (A vs B):** Sistema de seleção que permite isolar um país de análise e compará-lo diretamente com outro país ou com a **Média da UE27**.
@@ -54,6 +58,5 @@ A aplicação utiliza `@st.cache_data` para otimizar o carregamento do DataFrame
     ```bash
     streamlit run src/app.py
     ```
-
 ---
 **Desenvolvido por Carlos Pedro Pinto** 
