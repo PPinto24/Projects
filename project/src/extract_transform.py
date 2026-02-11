@@ -8,13 +8,12 @@ API Exemplo:
 Indicadores Utilizados:
 - População Total            | SP.POP.TOTL
 - PIB per capita (USD)       | NY.GDP.PCAP.CD
-- Taxa de Crescimento do PIB | NY.GDP.MKTP.KD.ZG
 - Taxa de Desemprego         | SL.UEM.TOTL.ZS
 - Força de trabalho (%)      | SL.TLF.TOTL.IN
+- Taxa de Cambio de Local Currency para USD | PA.NUS.FCRF
 
 Países:
-- PRT
-- ESP
+- Todos os Paises da UE
 """
 
 import requests
